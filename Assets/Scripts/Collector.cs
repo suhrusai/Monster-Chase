@@ -30,5 +30,12 @@ public class Collector : MonoBehaviour
             ScoreUIText.GetComponent<Text>().text = "Score: " + GameManager.Score;
             Destroy(collision.gameObject);
         }
+
+        if(collision.CompareTag("Player"))
+        {
+            //Displays Game Over text
+            collision.gameObject.GetComponent<Player>().KillPlayer();
+            Destroy(collision.gameObject);
+        }
     }
 }

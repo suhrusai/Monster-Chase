@@ -24,12 +24,15 @@ public class Player : MonoBehaviour
     private string GROUND_TAG = "Ground";
     private string WALK_ANIMATION = "Walk";
     private string ENEMY_TAG = "Enemy";
-    
 
+    [SerializeField]
+    private GameObject GameOver;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        GameOver = GameObject.Find("Game Over");
+        GameOver.SetActive(false);
         Time.timeScale = 1;
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -42,7 +45,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-
+        
     }
 
     // Update is called once per frame
@@ -102,8 +105,15 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag(ENEMY_TAG))
         {
+            KillPlayer();
             Destroy(gameObject);
-            Time.timeScale = 0;
+                //Displays Game Over text
         }
+    }
+    
+    public void  KillPlayer()
+    {
+        Time.timeScale = 0;
+        GameOver.SetActive(true);
     }
 }

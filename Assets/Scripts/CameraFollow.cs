@@ -53,7 +53,7 @@ public class CameraFollow : MonoBehaviour {
             yield return new WaitForSeconds(1f);
             GameManager.Score += 1;
             ScoreUIText.GetComponent<Text>().text = "Score: " + GameManager.Score;
-            Debug.Log("Score Increment with Time");
+            //Debug.Log("Score Increment with Time");
         }
     }
 
